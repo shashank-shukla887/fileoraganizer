@@ -66,6 +66,7 @@ function getFolderName(ext) {
      }
     }
   }
+  return "miscallaneous";
 }
   
 
@@ -73,14 +74,23 @@ function getFolderName(ext) {
 function copyFileToDest(srcPath, fullPathOfFile, folderName) {
   let destFolderPath=path.join(srcPath,"organized_files",folderName);
 
-  if(!fs.existssSync(destFolderPath))
+  if(!fs.existsSync(destFolderPath))
   {
     fs.mkdirSync(destFolderPath);
   }
   //magic 
 }
 
+let fileName=path.basename(fullPathOfFile);
+let destFileName=path.join(destFolderPath,fileName);
+
+fs.copyFileSync(fullPathOfFile,destFileName);
 
 
-let srcPath="C://Users//shashank_shukla//Desktop//project_web"
-organize(srcPath);
+//let srcPath="C:\\Users\\shashank_shukla\\Desktop\\project_web\\fileOrganizer\\downloads";
+//organize(srcPath);
+
+module.exports
+{
+  organize:organize;
+}
